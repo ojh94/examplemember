@@ -41,9 +41,9 @@ public class Member {
     private String address;
 
     @Builder
-    public Member(Long id, String memberid, String password, String name, String phone, String email, String nikname, String logindate, String address) {
+    public Member(Long id, String memberId, String password, String name, String phone, String email, String nikname, String logindate, String address) {
         this.id = id;
-        this.memberid = memberid;
+        this.memberid = memberId;
         this.password = password;
         this.name = name;
         this.phone = phone;
@@ -51,5 +51,9 @@ public class Member {
         this.nikname = nikname;
         this.logindate = logindate;
         this.address = address;
+    }
+
+    public void updatePassword(String password) {
+        this.password = password;
     }
 }
