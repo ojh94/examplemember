@@ -2,6 +2,7 @@ package com.itschool.springbootdeveloper.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,17 +10,46 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Member {
-    @Id
+    //@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "memberID",updatable = false)
-    private Long memberid;
+    @Column(updatable = false)
+    private Long id;
 
-    @Column(name = "name",nullable = false)
+    @Id
+    @Column(updatable = false, nullable = false, unique = true)
+    private String memberid;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false,unique = true,updatable = false)
     private String name;
 
-    @Column(name = "phone",nullable = false)
+    @Column(nullable = false,unique = true)
     private String phone;
 
-    @Column(name = "email", nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false, unique = true)
+    private String nikname;
+
+    @Column(nullable = false)
+    private String logindate;
+
+    @Column(nullable = false)
+    private String address;
+
+    @Builder
+    public Member(Long id, String memberid, String password, String name, String phone, String email, String nikname, String logindate, String address) {
+        this.id = id;
+        this.memberid = memberid;
+        this.password = password;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.nikname = nikname;
+        this.logindate = logindate;
+        this.address = address;
+    }
 }
